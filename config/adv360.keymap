@@ -8,16 +8,13 @@
     behaviors {
         #include "macros.dtsi"
 
-        hm: homerow_mods {
+        msl: mod_sticky_layer {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
+            label = "MOD_STICKY_LAYER";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick_tap_ms = <175>;
             flavor = "tap-preferred";
-            bindings =
-                <&kp>,
-                <&kp>;
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&sl>;
         };
     };
 
@@ -29,8 +26,8 @@
 &kp EQUAL     &kp N1    &kp N2  &kp N3  &kp N4  &kp N5         &tog 1                                                        &mo 3  &kp N6                     &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
   &kp TAB      &kp Q     &kp W   &kp E   &kp R   &kp T          &none                                                        &none   &kp Y                      &kp U      &kp I     &kp O     &kp P   &kp BSLH
   &kp ESC      &kp A     &kp S   &kp D   &kp F   &kp G          &none     &kp LCTRL  &kp LALT       &kp LGUI  &kp RCTRL      &none   &kp H                      &kp J      &kp K     &kp L  &kp SEMI    &kp SQT
-&kp LSHFT      &kp Z     &kp X   &kp C   &kp V   &kp B                               &kp HOME      &kp PG_UP                         &kp N                      &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp RSHFT
-    &mo 2  &kp GRAVE  &kp CAPS  &trans  &trans          &kp BACKSPACE  &lt 2 DELETE   &kp END      &kp PG_DN  &kp ENTER  &kp SPACE          &mt RIGHT_SHIFT LS(LA(A))     &trans  &kp LBKT  &kp RBKT      &mo 2
+&kp LSHFT      &kp Z     &kp X   &kp C   &kp V   &kp B                               &kp HOME      &kp PG_UP                         &kp N                      &kp M  &kp COMMA   &kp DOT  &kp FSLH  &msl RSHFT 1
+    &mo 2  &kp GRAVE  &kp CAPS  &none  &none          &kp BACKSPACE  &lt 2 DELETE   &kp END      &kp PG_DN  &kp ENTER  &kp SPACE          &none    &none  &kp LBKT  &kp RBKT      &mo 2
             >;
         };
 
