@@ -4,7 +4,19 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
 
+#define MACRO_ALTCODE(NAME, KEYS) \
+    NAME: NAME { \
+        compatible = "zmk,behavior-macro"; \
+        label = "##NAME"; \
+        #binding-cells = <0>; \
+        bindings = \
+            <&macro_press   &kp LALT>, \
+            <&macro_tap     KEYS>, \
+            <&macro_release &kp LALT>; \
+    };
+
 / {
+
     behaviors {
         #include "macros.dtsi"
 
@@ -21,12 +33,61 @@
     };
 
     macros {
-        a_grave: a_grave {
-            compatible = "zmk,behavior-macro";
-            label = "A_GRAVE";
-            #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp A>;
-        };
+        // Accents
+        // ref: https://support.microsoft.com/en-us/office/insert-ascii-or-unicode-latin-based-symbols-and-characters-d13f58d3-7bcb-44a7-a4d5-972ee12e50e0
+
+        // é - ALT+130
+        MACRO_ALTCODE(lc_e_acute, &kp KP_N1 &kp KP_N3 &kp KP_N0)
+        // É - ALT+144
+        MACRO_ALTCODE(uc_e_acute, &kp KP_N1 &kp KP_N4 &kp KP_N4)
+
+        // à - ALT+133
+        MACRO_ALTCODE(lc_a_grave, &kp KP_N1 &kp KP_N3 &kp KP_N3)
+        // À - ALT+0192
+        MACRO_ALTCODE(uc_a_grave, &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N2)
+        // è - ALT+138
+        MACRO_ALTCODE(lc_e_grave, &kp KP_N1 &kp KP_N3 &kp KP_N8)
+        // È - ALT+0200
+        MACRO_ALTCODE(uc_e_grave, &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N0)
+        // ù - ALT+151
+        MACRO_ALTCODE(lc_u_grave, &kp KP_N1 &kp KP_N5 &kp KP_N1)
+        // Ù - ALT+0217
+        MACRO_ALTCODE(uc_u_grave, &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N7)
+
+        // â - ALT+131
+        MACRO_ALTCODE(lc_a_circ, &kp KP_N1 &kp KP_N3 &kp KP_N1)
+        // Â - ALT+0194
+        MACRO_ALTCODE(uc_a_circ, &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N4)
+        // ê - ALT+136
+        MACRO_ALTCODE(lc_e_circ, &kp KP_N1 &kp KP_N3 &kp KP_N6)
+        // Ê - ALT+202
+        MACRO_ALTCODE(uc_e_circ, &kp KP_N2 &kp KP_N0 &kp KP_N2)
+        // î - ALT+140
+        MACRO_ALTCODE(lc_i_circ, &kp KP_N1 &kp KP_N4 &kp KP_N0)
+        // Î - ALT+0206
+        MACRO_ALTCODE(uc_i_circ, &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N6)
+        // ô - ALT+147
+        MACRO_ALTCODE(lc_o_circ, &kp KP_N1 &kp KP_N4 &kp KP_N7)
+        // Ô - ALT+212
+        MACRO_ALTCODE(uc_o_circ, &kp KP_N2 &kp KP_N1 &kp KP_N2)
+        // û - ALT+150
+        MACRO_ALTCODE(lc_u_circ, &kp KP_N1 &kp KP_N5 &kp KP_N0)
+        // Û - ALT+0219
+        MACRO_ALTCODE(uc_u_circ, &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N9)
+
+        // ë - ALT+137
+        MACRO_ALTCODE(lc_e_uml, &kp KP_N1 &kp KP_N3 &kp KP_N7)
+        // Ë - ALT+203
+        MACRO_ALTCODE(uc_e_uml, &kp KP_N2 &kp KP_N0 &kp KP_N3)
+        // ï - ALT+139
+        MACRO_ALTCODE(lc_i_uml, &kp KP_N1 &kp KP_N3 &kp KP_N9)
+        // Ï - ALT+0207
+        MACRO_ALTCODE(uc_i_uml, &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N7)
+
+        // ç - ALT+135
+        MACRO_ALTCODE(lc_c_cedil, &kp KP_N1 &kp KP_N3 &kp KP_N5)
+        // Ç - ALT+128
+        MACRO_ALTCODE(uc_c_cedil, &kp KP_N1 &kp KP_N2 &kp KP_N8)
     };
 
     keymap {
@@ -72,11 +133,21 @@
             >;
         };
 
-        accents {
+        lc_accents {
             bindings = <
 &trans    &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &trans  &trans  &lc_e_grave  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &lc_a_grave  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&mo 5    &trans  &trans  &trans  &trans  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        uc_accents {
+            bindings = <
 &trans    &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &a_grave  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans    &trans  &trans  &uc_e_grave  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &uc_a_grave  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans    &trans  &trans  &trans  &trans  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
 &trans    &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
             >;
@@ -87,7 +158,7 @@
 &trans  &trans  &trans  &trans                 &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans                 &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans                 &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &kp LS(LA(LC(LG(C))))  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &kp LS(LA(LC(LG(C))))  &trans  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans                 &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
