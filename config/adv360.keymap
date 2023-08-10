@@ -4,90 +4,15 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
 
-#define MACRO_ALTCODE(NAME, KEYS) \
-    NAME: NAME { \
-        compatible = "zmk,behavior-macro"; \
-        label = "##NAME"; \
-        #binding-cells = <0>; \
-        bindings = \
-            <&macro_press   &kp LALT>, \
-            <&macro_tap     KEYS>, \
-            <&macro_release &kp LALT>; \
-    };
+#include "user_constants.h"
 
 / {
-
     behaviors {
-        #include "macros.dtsi"
-
-        msl: mod_sticky_layer {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MOD_STICKY_LAYER";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings =
-                <&kp>,
-                <&sl>;
-        };
+        #include "user_behaviors.dtsi"
     };
 
     macros {
-        // Accents
-        // ref: https://support.microsoft.com/en-us/office/insert-ascii-or-unicode-latin-based-symbols-and-characters-d13f58d3-7bcb-44a7-a4d5-972ee12e50e0
-
-        // é - ALT+130
-        MACRO_ALTCODE(lc_e_acute, &kp KP_N1 &kp KP_N3 &kp KP_N0)
-        // É - ALT+144
-        MACRO_ALTCODE(uc_e_acute, &kp KP_N1 &kp KP_N4 &kp KP_N4)
-
-        // à - ALT+133
-        MACRO_ALTCODE(lc_a_grave, &kp KP_N1 &kp KP_N3 &kp KP_N3)
-        // À - ALT+0192
-        MACRO_ALTCODE(uc_a_grave, &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N2)
-        // è - ALT+138
-        MACRO_ALTCODE(lc_e_grave, &kp KP_N1 &kp KP_N3 &kp KP_N8)
-        // È - ALT+0200
-        MACRO_ALTCODE(uc_e_grave, &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N0)
-        // ù - ALT+151
-        MACRO_ALTCODE(lc_u_grave, &kp KP_N1 &kp KP_N5 &kp KP_N1)
-        // Ù - ALT+0217
-        MACRO_ALTCODE(uc_u_grave, &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N7)
-
-        // â - ALT+131
-        MACRO_ALTCODE(lc_a_circ, &kp KP_N1 &kp KP_N3 &kp KP_N1)
-        // Â - ALT+0194
-        MACRO_ALTCODE(uc_a_circ, &kp KP_N0 &kp KP_N1 &kp KP_N9 &kp KP_N4)
-        // ê - ALT+136
-        MACRO_ALTCODE(lc_e_circ, &kp KP_N1 &kp KP_N3 &kp KP_N6)
-        // Ê - ALT+202
-        MACRO_ALTCODE(uc_e_circ, &kp KP_N2 &kp KP_N0 &kp KP_N2)
-        // î - ALT+140
-        MACRO_ALTCODE(lc_i_circ, &kp KP_N1 &kp KP_N4 &kp KP_N0)
-        // Î - ALT+0206
-        MACRO_ALTCODE(uc_i_circ, &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N6)
-        // ô - ALT+147
-        MACRO_ALTCODE(lc_o_circ, &kp KP_N1 &kp KP_N4 &kp KP_N7)
-        // Ô - ALT+212
-        MACRO_ALTCODE(uc_o_circ, &kp KP_N2 &kp KP_N1 &kp KP_N2)
-        // û - ALT+150
-        MACRO_ALTCODE(lc_u_circ, &kp KP_N1 &kp KP_N5 &kp KP_N0)
-        // Û - ALT+0219
-        MACRO_ALTCODE(uc_u_circ, &kp KP_N0 &kp KP_N2 &kp KP_N1 &kp KP_N9)
-
-        // ë - ALT+137
-        MACRO_ALTCODE(lc_e_uml, &kp KP_N1 &kp KP_N3 &kp KP_N7)
-        // Ë - ALT+203
-        MACRO_ALTCODE(uc_e_uml, &kp KP_N2 &kp KP_N0 &kp KP_N3)
-        // ï - ALT+139
-        MACRO_ALTCODE(lc_i_uml, &kp KP_N1 &kp KP_N3 &kp KP_N9)
-        // Ï - ALT+0207
-        MACRO_ALTCODE(uc_i_uml, &kp KP_N0 &kp KP_N2 &kp KP_N0 &kp KP_N7)
-
-        // ç - ALT+135
-        MACRO_ALTCODE(lc_c_cedil, &kp KP_N1 &kp KP_N3 &kp KP_N5)
-        // Ç - ALT+128
-        MACRO_ALTCODE(uc_c_cedil, &kp KP_N1 &kp KP_N2 &kp KP_N8)
+        #include "user_macros.dtsi"
     };
 
     keymap {
@@ -95,71 +20,71 @@
 
         default_layer {
             bindings = <
-       &kp EQUAL     &kp N1    &kp N2  &kp N3  &kp N4  &kp N5         &tog 1                                                          &mo 3  &kp N6  &kp N7     &kp N8    &kp N9    &kp N0     &kp MINUS
-         &kp TAB      &kp Q     &kp W   &kp E   &kp R   &kp T          &none                                                          &none   &kp Y   &kp U      &kp I     &kp O     &kp P      &kp BSLH
-&mt LCTRL ESCAPE      &kp A     &kp S   &kp D   &kp F   &kp G          &none     &kp LCTRL  &kp LALT       &kp LGUI    &kp RCTRL      &none   &kp H   &kp J      &kp K     &kp L  &kp SEMI       &kp SQT
-       &kp LSHFT      &kp Z     &kp X   &kp C   &kp V   &kp B                               &kp HOME      &kp PG_UP                           &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &msl RSHFT 4
-           &mo 2  &kp GRAVE  &kp CAPS   &none   &none          &kp BACKSPACE  &lt 2 DELETE   &kp END      &kp PG_DN  &lt 5 ENTER  &kp SPACE           &none      &none  &kp LBKT  &kp RBKT         &mo 2
+                /*=*/    KC_EQ      /*1*/ KC_1    /*2*/    KC_2     /*3*/    KC_3    /*4*/    KC_4     /*5*/ KC_5     /*KP*/  LAY_KP                                       /**/                                        /*MOD*/ LAY_MOD  /*6*/ KC_6     /*7*/    KC_7     /*8*/    KC_8     /*9*/ KC_9     /*0*/ KC_0     /*-*/    KC_MIN
+                /*TAB*/  KC_TAB     /*Q*/ KC_Q    /*W*/    KC_W     /*E*/    KC_E    /*R*/    KC_R     /*T*/ KC_T     /*HK1*/ KC_NO                                        /**/                                        /*HK3*/ KC_NO    /*Y*/ KC_Y     /*U*/    KC_U     /*I*/    KC_I     /*O*/ KC_O     /*P*/ KC_P     /*\*/    KC_BSLS
+                /*ESC*/  LCTRL_ESC  /*A*/ KC_A    /*S*/    KC_S     /*D*/    KC_D    /*F*/    KC_F     /*G*/ KC_G     /*HK2*/ KC_NO    /*CTRL*/ KC_LCTL  /*ALT*/  KC_LALT  /**/  /*WIN*/  KC_LGUI   /*CTRL*/ KC_RCTL   /*HK4*/ KC_NO    /*H*/ KC_H     /*J*/    KC_J     /*K*/    KC_K     /*L*/ KC_L     /*;*/ KC_SCLN  /*'*/    KC_QUOT
+                /*SHFT*/ KC_LSFT    /*Z*/ KC_Z    /*X*/    KC_X     /*C*/    KC_C    /*V*/    KC_V     /*B*/ KC_B                                        /*HOME*/ KC_HOME  /**/  /*PGUP*/ KC_PGUP                                       /*N*/ KC_N     /*M*/    KC_M     /*,*/    KC_COMM  /*.*/ KC_DOT   /*/*/ KC_SLSH  /*SHFT*/ SHFT_LACC
+                /*FN*/   LAY_FN     /*`*/ KC_GRV  /*CAPS*/ KC_CAPS  /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_BSPC  /*DEL*/  FN_DEL   /*END*/  KC_END   /**/  /*PGDN*/ KC_PGDN   /*ENT*/ WM_ENTER   /*SPC*/ KC_SPC                  /*UARR*/ KC_NO    /*DARR*/ KC_NO    /*[*/ KC_LBRC  /*]*/ KC_RBRC  /*FN*/   LAY_FN
             >;
         };
 
         keypad {
             bindings = <
-&kp EQUAL     &kp N1    &kp N2    &kp N3     &kp N4  &kp N5    &trans                                                     &mo 3  &kp N6  &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS
-  &kp TAB      &kp Q     &kp W     &kp E      &kp R   &kp T     &none                                                     &none   &kp Y   &kp KP_N7     &kp KP_N8      &kp KP_N9     &kp KP_MINUS   &kp BSLH
-  &kp ESC      &kp A     &kp S     &kp D      &kp F   &kp G     &none  &kp LCTRL  &kp LALT       &kp LGUI  &kp RCTRL      &none   &kp H   &kp KP_N4     &kp KP_N5      &kp KP_N6      &kp KP_PLUS    &kp SQT
-&kp LSHFT      &kp Z     &kp X     &kp C      &kp V   &kp B                       &kp HOME      &kp PG_UP                         &kp N   &kp KP_N1     &kp KP_N2      &kp KP_N3     &kp KP_ENTER  &kp RSHFT
-    &mo 2  &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp BSPC    &kp DEL   &kp END      &kp PG_DN  &kp ENTER  &kp KP_N0              &kp UP      &kp DOWN     &kp KP_DOT         &kp RBKT      &mo 2
+                /*=*/    KC_NO      /*1*/ KC_NO   /*2*/    KC_NO    /*3*/    KC_NO   /*4*/    KC_NO    /*5*/ KC_NO    /*KP*/  LAY_KP                                       /**/                                        /*MOD*/ LAY_MOD  /*6*/ KC_NO    /*7*/    KC_NUM   /*8*/    KC_PEQL  /*9*/ KC_PSLS  /*0*/ KC_PAST  /*-*/    KC_NO
+                /*TAB*/  KC_NO      /*Q*/ KC_NO   /*W*/    KC_NO    /*E*/    KC_NO   /*R*/    KC_NO    /*T*/ KC_NO    /*HK1*/ KC_NO                                        /**/                                        /*HK3*/ KC_NO    /*Y*/ KC_NO    /*U*/    KC_KP_7  /*I*/    KC_KP_8  /*O*/ KC_KP_9  /*P*/ KC_PMNS  /*\*/    KC_NO
+                /*ESC*/  KC_NO      /*A*/ KC_NO   /*S*/    KC_NO    /*D*/    KC_NO   /*F*/    KC_NO    /*G*/ KC_NO    /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO    /**/  /*WIN*/  KC_NO     /*CTRL*/ KC_NO     /*HK4*/ KC_NO    /*H*/ KC_NO    /*J*/    KC_KP_4  /*K*/    KC_KP_5  /*L*/ KC_KP_6  /*;*/ KC_PPLS  /*'*/    KC_NO
+                /*SHFT*/ KC_NO      /*Z*/ KC_NO   /*X*/    KC_NO    /*C*/    KC_NO   /*V*/    KC_NO    /*B*/ KC_NO                                       /*HOME*/ KC_NO    /**/  /*PGUP*/ KC_NO                                         /*N*/ KC_NO    /*M*/    KC_KP_1  /*,*/    KC_KP_2  /*.*/ KC_KP_3  /*/*/ KC_PENT  /*SHFT*/ KC_NO
+                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO    /**/  /*PGDN*/ KC_NO     /*ENT*/  KC_NO     /*SPC*/ KC_NO                   /*UARR*/ KC_NO    /*DARR*/ KC_NO    /*[*/ KC_PDOT  /*]*/ KC_NO    /*FN*/   KC_NO
             >;
         };
 
         fn {
             bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &tog 1                                       &mo 3          &kp F7          &kp F8        &kp F9          &kp F10  &kp F11  &kp F12
-&trans  &trans  &trans  &trans  &trans  &trans   &none                                       &none        &kp HOME   &kp PAGE_DOWN   &kp PAGE_UP          &kp END   &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans   &none  &trans  &trans      &trans  &trans   &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW   &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                          &trans          &trans        &trans           &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans                          &trans        &trans           &trans   &trans   &trans
+                /*=*/    KC_F1      /*1*/ KC_F2   /*2*/    KC_F3    /*3*/    KC_F4   /*4*/    KC_F5    /*5*/ KC_F6    /*KP*/  KC_NO                                        /**/                                        /*MOD*/ LAY_MOD  /*6*/ KC_F7    /*7*/    KC_F8    /*8*/    KC_F9    /*9*/ KC_F10   /*0*/ KC_F11   /*-*/    KC_F12
+                /*TAB*/  KC_NO      /*Q*/ KC_NO   /*W*/    W_CLOSE  /*E*/    W_UP    /*R*/    W_REF    /*T*/ KC_NO    /*HK1*/ KC_NO                                        /**/                                        /*HK3*/ KC_NO    /*Y*/ KC_HOME  /*U*/    KC_PGDN  /*I*/    KC_PGUP  /*O*/ KC_END   /*P*/ KC_NO    /*\*/    KC_NO
+                /*ESC*/  W_QUIT     /*A*/ W_WLEFT /*S*/    W_LEFT   /*D*/    W_DOWN  /*F*/    W_RIGHT  /*G*/ W_WRIGHT /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO    /**/  /*WIN*/  KC_NO     /*CTRL*/ KC_NO     /*HK4*/ KC_NO    /*H*/ KC_LEFT  /*J*/    KC_DOWN  /*K*/    KC_UP    /*L*/ KC_RIGHT /*;*/ KC_NO    /*'*/    KC_NO
+                /*SHFT*/ KC_NO      /*Z*/ KC_NO   /*X*/    W_DLEFT  /*C*/    W_TASK  /*V*/    W_DRIGHT /*B*/ KC_NO                                       /*HOME*/ KC_NO    /**/  /*PGUP*/ KC_NO                                         /*N*/ KC_NO    /*M*/    KC_NO    /*,*/    KC_NO    /*.*/ KC_NO    /*/*/ KC_NO    /*SHFT*/ KC_NO
+                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO    /**/  /*PGDN*/ KC_NO     /*ENT*/  KC_NO     /*SPC*/ KC_NO                   /*UARR*/ KC_NO    /*DARR*/ KC_NO    /*[*/ KC_NO    /*]*/ KC_NO    /*FN*/   KC_NO
             >;
         };
 
         mod {
             bindings = <
-&none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4        &none                                                            &trans  &none       &none       &none  &none  &none  &none
-&none         &none         &none         &none         &none         &none  &bootloader                                                       &bootloader  &none       &none       &none  &none  &none  &none
-&none         &none         &none         &none         &none         &none        &none  &none  &none      &bt BT_CLR       &none  &rgb_ug RGB_MEFS_CMD 5  &none       &none       &none  &none  &none  &none
-&none         &none         &none         &none         &none         &none                      &none           &none                                      &none       &none       &none  &none  &none  &none
-&none         &none         &none         &none         &none                      &none  &none  &none           &none  &bl BL_TOG         &rgb_ug RGB_TOG         &bl BL_INC  &bl BL_DEC  &none  &none  &none
+                /*=*/    KC_NO      /*1*/ BTH_P1  /*2*/    BTH_P2   /*3*/    BTH_P3  /*4*/    BTH_P4   /*5*/ BTH_P5   /*KP*/  KC_NO                                        /**/                                        /*MOD*/ _______  /*6*/ KC_NO    /*7*/    KC_NO    /*8*/    KC_NO    /*9*/ KC_NO    /*0*/ KC_NO    /*-*/    KC_NO
+                /*TAB*/  KC_NO      /*Q*/ KC_NO   /*W*/    KC_NO    /*E*/    KC_NO   /*R*/    KC_NO    /*T*/ KC_NO    /*HK1*/ BOOT                                         /**/                                        /*HK3*/ BOOT     /*Y*/ KC_NO    /*U*/    KC_NO    /*I*/    KC_NO    /*O*/ KC_NO    /*P*/ KC_NO    /*\*/    KC_NO
+                /*ESC*/  KC_NO      /*A*/ KC_NO   /*S*/    KC_NO    /*D*/    KC_NO   /*F*/    KC_NO    /*G*/ KC_NO    /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO    /**/  /*WIN*/  BTH_CLR   /*CTRL*/ KC_NO     /*HK4*/ RGB_CYCL /*H*/ KC_NO    /*J*/    KC_NO    /*K*/    KC_NO    /*L*/ KC_NO    /*;*/ KC_NO    /*'*/    KC_NO
+                /*SHFT*/ KC_NO      /*Z*/ KC_NO   /*X*/    KC_NO    /*C*/    KC_NO   /*V*/    KC_NO    /*B*/ KC_NO                                       /*HOME*/ KC_NO    /**/  /*PGUP*/ KC_NO                                         /*N*/ KC_NO    /*M*/    KC_NO    /*,*/    KC_NO    /*.*/ KC_NO    /*/*/ KC_NO    /*SHFT*/ KC_NO
+                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO    /**/  /*PGDN*/ KC_NO     /*ENT*/  BLT_TOG   /*SPC*/ RGB_TGL                 /*UARR*/ BLT_INC  /*DARR*/ BLT_DEC  /*[*/ KC_NO    /*]*/ KC_NO    /*FN*/   KC_NO
             >;
         };
 
         lc_accents {
             bindings = <
-&trans    &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans    &trans  &trans  &lc_e_grave  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &lc_a_grave  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&mo 5    &trans  &trans  &trans  &trans  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans    &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+                /*=*/    KC_NO      /*1*/ KC_NO   /*2*/    KC_NO    /*3*/    LE_CRC  /*4*/    KC_NO    /*5*/ KC_NO    /*KP*/  KC_NO                                        /**/                                        /*MOD*/ KC_NO    /*6*/ KC_NO    /*7*/    LU_CRC   /*8*/    KC_NO    /*9*/ KC_NO    /*0*/ KC_NO    /*-*/    KC_NO
+                /*TAB*/  KC_NO      /*Q*/ LA_CRC  /*W*/    KC_NO    /*E*/    LE_GRV  /*R*/    KC_NO    /*T*/ KC_NO    /*HK1*/ KC_NO                                        /**/                                        /*HK3*/ KC_NO    /*Y*/ KC_NO    /*U*/    LU_GRV   /*I*/    LI_CRC   /*O*/ LO_CRC   /*P*/ KC_NO    /*\*/    KC_NO
+                /*ESC*/  KC_NO      /*A*/ LA_GRV  /*S*/    KC_NO    /*D*/    LE_UML  /*F*/    KC_NO    /*G*/ KC_NO    /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO    /**/  /*WIN*/  KC_NO     /*CTRL*/ KC_NO     /*HK4*/ KC_NO    /*H*/ KC_NO    /*J*/    LU_UML   /*K*/    LI_UML   /*L*/ KC_NO    /*;*/ KC_NO    /*'*/    KC_NO
+                /*SHFT*/ LAY_UACC   /*Z*/ KC_NO   /*X*/    KC_NO    /*C*/    LC_CDL  /*V*/    KC_NO    /*B*/ KC_NO                                       /*HOME*/ KC_NO    /**/  /*PGUP*/ KC_NO                                         /*N*/ KC_NO    /*M*/    KC_NO    /*,*/    KC_NO    /*.*/ KC_NO    /*/*/ LE_ACU   /*SHFT*/ KC_NO
+                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO    /**/  /*PGDN*/ KC_NO     /*ENT*/  KC_NO     /*SPC*/ KC_NO                   /*UARR*/ KC_NO    /*DARR*/ KC_NO    /*[*/ KC_NO    /*]*/ KC_NO    /*FN*/   KC_NO
             >;
         };
 
         uc_accents {
             bindings = <
-&trans    &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans    &trans  &trans  &uc_e_grave  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &uc_a_grave  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans    &trans  &trans  &trans  &trans  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans    &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+                /*=*/    KC_NO      /*1*/ KC_NO   /*2*/    KC_NO    /*3*/    UE_CRC  /*4*/    KC_NO    /*5*/ KC_NO    /*KP*/  KC_NO                                        /**/                                        /*MOD*/ KC_NO    /*6*/ KC_NO    /*7*/    UU_CRC   /*8*/    KC_NO    /*9*/ KC_NO    /*0*/ KC_NO    /*-*/    KC_NO
+                /*TAB*/  KC_NO      /*Q*/ UA_CRC  /*W*/    KC_NO    /*E*/    UE_GRV  /*R*/    KC_NO    /*T*/ KC_NO    /*HK1*/ KC_NO                                        /**/                                        /*HK3*/ KC_NO    /*Y*/ KC_NO    /*U*/    UU_GRV   /*I*/    UI_CRC   /*O*/ UO_CRC   /*P*/ KC_NO    /*\*/    KC_NO
+                /*ESC*/  KC_NO      /*A*/ UA_GRV  /*S*/    KC_NO    /*D*/    UE_UML  /*F*/    KC_NO    /*G*/ KC_NO    /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO    /**/  /*WIN*/  KC_NO     /*CTRL*/ KC_NO     /*HK4*/ KC_NO    /*H*/ KC_NO    /*J*/    UU_UML   /*K*/    UI_UML   /*L*/ KC_NO    /*;*/ KC_NO    /*'*/    KC_NO
+                /*SHFT*/ LAY_UACC   /*Z*/ KC_NO   /*X*/    KC_NO    /*C*/    UC_CDL  /*V*/    KC_NO    /*B*/ KC_NO                                       /*HOME*/ KC_NO    /**/  /*PGUP*/ KC_NO                                         /*N*/ KC_NO    /*M*/    KC_NO    /*,*/    KC_NO    /*.*/ KC_NO    /*/*/ UE_ACU   /*SHFT*/ KC_NO
+                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO    /**/  /*PGDN*/ KC_NO     /*ENT*/  KC_NO     /*SPC*/ KC_NO                   /*UARR*/ KC_NO    /*DARR*/ KC_NO    /*[*/ KC_NO    /*]*/ KC_NO    /*FN*/   KC_NO
             >;
         };
 
         wm_sym {
             bindings = <
-&trans  &trans  &trans  &trans                 &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans                 &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans                 &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &kp LS(LA(LC(LG(C))))  &trans  &trans                  &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans                 &trans          &trans  &trans  &trans      &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+                /*=*/    KC_NO      /*1*/ KC_NO   /*2*/    KC_NO    /*3*/    KC_NO   /*4*/    KC_NO    /*5*/ KC_NO    /*KP*/  KC_NO                                                                     KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
+                /*TAB*/  KC_NO      /*Q*/ WM_Q    /*W*/    WM_W     /*E*/    WM_E    /*R*/    WM_R     /*T*/ WM_T     /*HK1*/ KC_NO                                                                     KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
+                /*ESC*/  KC_NO      /*A*/ WM_A    /*S*/    WM_S     /*D*/    WM_D    /*F*/    WM_F     /*G*/ WM_G     /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO          /*WIN*/  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
+                /*SHFT*/ KC_NO      /*Z*/ WM_Z    /*X*/    WM_X     /*C*/    WM_C    /*V*/    WM_V     /*B*/ WM_B                                        /*HOME*/ KC_NO          /*PGUP*/ KC_NO                  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
+                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO          /*PGDN*/ KC_NO  KC_NO  KC_NO          KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
             >;
         };
     };
