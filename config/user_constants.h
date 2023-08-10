@@ -25,6 +25,12 @@
 #define KC_PGUP &kp PG_UP
 #define KC_PGDN &kp PG_DN
 
+#define KC_WFWD &kp K_FORWARD
+#define KC_WBAK &kp K_BACK
+
+#define KC_PSCR &kp PRINTSCREEN
+#define KC_PAUS &kp PAUSE
+
 #define KC_A &kp A
 #define KC_B &kp B
 #define KC_C &kp C
@@ -127,15 +133,24 @@
 
 #define BOOT &bootloader
 
+// Layers
+#define LAYER_DEFAULT 1
+#define LAYER_FN 2
+#define LAYER_MOD 3
+#define LAYER_LOWER_ACCENTS 4
+#define LAYER_UPPER_ACCENTS 5
+#define LAYER_WM 6
+
 // User macros
 #define LCTRL_ESC &mt LCTRL ESC
-#define FN_DEL &lt 2 DELETE
-#define WM_ENTER &lt 5 ENTER
-#define SHFT_LACC &msl RSHFT 4
-#define LAY_KP &tog 1
-#define LAY_FN &mo 2
-#define LAY_MOD &mo 3
-#define LAY_UACC &mo 5
+//#define MIN_EQ &min_eq
+#define FN_DEL &lt LAYER_FN DELETE
+#define WM_ENTER &lt LAYER_WM ENTER
+#define SHFT_LACC &msl RSHFT LAYER_LOWER_ACCENTS
+#define LAY_KP &tog LAYER_DEFAULT
+#define LAY_FN &mo LAYER_FN
+#define LAY_MOD &mo LAYER_MOD
+#define LAY_UACC &mo LAYER_UPPER_ACCENTS
 
 // Accents
 #define LE_ACU &LOWER_E_ACUTE

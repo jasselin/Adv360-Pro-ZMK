@@ -42,9 +42,9 @@
             bindings = <
                 /*=*/    KC_F1      /*1*/ KC_F2   /*2*/    KC_F3    /*3*/    KC_F4   /*4*/    KC_F5    /*5*/ KC_F6    /*KP*/  KC_NO                                        /**/                                        /*MOD*/ LAY_MOD  /*6*/ KC_F7    /*7*/    KC_F8    /*8*/    KC_F9    /*9*/ KC_F10   /*0*/ KC_F11   /*-*/    KC_F12
                 /*TAB*/  KC_NO      /*Q*/ KC_NO   /*W*/    W_CLOSE  /*E*/    W_UP    /*R*/    W_REF    /*T*/ KC_NO    /*HK1*/ KC_NO                                        /**/                                        /*HK3*/ KC_NO    /*Y*/ KC_HOME  /*U*/    KC_PGDN  /*I*/    KC_PGUP  /*O*/ KC_END   /*P*/ KC_NO    /*\*/    KC_NO
-                /*ESC*/  W_QUIT     /*A*/ W_WLEFT /*S*/    W_LEFT   /*D*/    W_DOWN  /*F*/    W_RIGHT  /*G*/ W_WRIGHT /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO    /**/  /*WIN*/  KC_NO     /*CTRL*/ KC_NO     /*HK4*/ KC_NO    /*H*/ KC_LEFT  /*J*/    KC_DOWN  /*K*/    KC_UP    /*L*/ KC_RIGHT /*;*/ KC_NO    /*'*/    KC_NO
+                /*ESC*/  W_QUIT     /*A*/ W_WLEFT /*S*/    W_LEFT   /*D*/    W_DOWN  /*F*/    W_RIGHT  /*G*/ W_WRIGHT /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO    /**/  /*WIN*/  KC_PSCR   /*CTRL*/ KC_PAUS   /*HK4*/ KC_NO    /*H*/ KC_LEFT  /*J*/    KC_DOWN  /*K*/    KC_UP    /*L*/ KC_RIGHT /*;*/ KC_NO    /*'*/    KC_NO
                 /*SHFT*/ KC_NO      /*Z*/ KC_NO   /*X*/    W_DLEFT  /*C*/    W_TASK  /*V*/    W_DRIGHT /*B*/ KC_NO                                       /*HOME*/ KC_NO    /**/  /*PGUP*/ KC_NO                                         /*N*/ KC_NO    /*M*/    KC_NO    /*,*/    KC_NO    /*.*/ KC_NO    /*/*/ KC_NO    /*SHFT*/ KC_NO
-                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO    /**/  /*PGDN*/ KC_NO     /*ENT*/  KC_NO     /*SPC*/ KC_NO                   /*UARR*/ KC_NO    /*DARR*/ KC_NO    /*[*/ KC_NO    /*]*/ KC_NO    /*FN*/   KC_NO
+                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO    /**/  /*PGDN*/ KC_NO     /*ENT*/  KC_NO     /*SPC*/ KC_NO                   /*UARR*/ KC_WBAK  /*DARR*/ KC_WFWD  /*[*/ KC_NO    /*]*/ KC_NO    /*FN*/   KC_NO
             >;
         };
 
