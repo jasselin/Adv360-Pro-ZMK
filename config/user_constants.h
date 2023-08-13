@@ -29,7 +29,7 @@
 #define KC_WBAK &kp K_BACK
 
 #define KC_PSCR &kp PRINTSCREEN
-#define KC_PAUS &kp PAUSE
+#define KC_PAUS &kp PAUSE_BREAK
 
 #define KC_A &kp A
 #define KC_B &kp B
@@ -134,7 +134,8 @@
 #define BOOT &bootloader
 
 // Layers
-#define LAYER_DEFAULT 1
+#define LAYER_DEFAULT 0
+#define LAYER_KP 1
 #define LAYER_FN 2
 #define LAYER_MOD 3
 #define LAYER_LOWER_ACCENTS 4
@@ -197,6 +198,8 @@
 #define W_TASK &kp LG(TAB)
 #define W_DLEFT &kp LC(LG(LEFT_ARROW))
 #define W_DRIGHT &kp LC(LG(RIGHT_ARROW))
+#define ALT_TAB &kp LA(TAB)
+#define ALT_STAB &kp LA(LS(TAB))
 
 // Launcher / switcher
 #define WM_Q &kp LS(LA(LC(LG(Q))))
@@ -214,17 +217,3 @@
 #define WM_C &kp LS(LA(LC(LG(C))))
 #define WM_V &kp LS(LA(LC(LG(V))))
 #define WM_B &kp LS(LA(LC(LG(B))))
-
-// Macros
-#define MACRO_ALTCODE(NAME, KEYS) \
-    NAME: NAME { \
-        compatible = "zmk,behavior-macro"; \
-        label = "##NAME"; \
-        #binding-cells = <0>; \
-        bindings = \
-            <&macro_press   &kp LALT>, \
-            <&macro_tap     KEYS>, \
-            <&macro_release &kp LALT>; \
-    };
-
-
