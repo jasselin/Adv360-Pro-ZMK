@@ -156,6 +156,13 @@
 // French canadian layout shortcuts
 #define FR_BS &kp RA(GRAVE)
 #define FR_AT &kp LS(N2)
+#define FR_LBK &kp RA(LBKT)
+#define FR_RBK &kp RA(RBKT)
+#define FR_LBC &kp RA(SQT)
+#define FR_RBC &kp RA(BSLH)
+#define FR_TLD &SYM_TLD
+#define FR_BTK &SYM_BTK
+#define FR_CRC &SYM_CRC
 
 // Accents
 #define LE_ACU &LOWER_E_ACUTE
@@ -221,3 +228,4 @@
 #define WM_C &kp LS(LA(LC(LG(C))))
 #define WM_V &kp LS(LA(LC(LG(V))))
 #define WM_B &kp LS(LA(LC(LG(B))))
+#define WM_M &kp LS(LA(LC(LG(M))))
