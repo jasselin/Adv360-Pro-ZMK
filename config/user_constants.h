@@ -153,6 +153,10 @@
 #define LAY_MOD &mo LAYER_MOD
 #define LAY_UACC &mo LAYER_UPPER_ACCENTS
 
+// French canadian layout shortcuts
+#define FR_BS &kp RA(GRAVE)
+#define FR_AT &kp LS(N2)
+
 // Accents
 #define LE_ACU &LOWER_E_ACUTE
 #define UE_ACU &UPPER_E_ACUTE

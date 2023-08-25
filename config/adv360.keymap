@@ -23,7 +23,7 @@
                 /*=*/    KC_EQ      /*1*/ KC_1    /*2*/    KC_2     /*3*/    KC_3    /*4*/    KC_4     /*5*/ KC_5     /*KP*/  LAY_KP                                       /**/                                        /*MOD*/ LAY_MOD  /*6*/ KC_6     /*7*/    KC_7     /*8*/    KC_8     /*9*/ KC_9     /*0*/ KC_0     /*-*/    KC_MIN
                 /*TAB*/  KC_TAB     /*Q*/ KC_Q    /*W*/    KC_W     /*E*/    KC_E    /*R*/    KC_R     /*T*/ KC_T     /*HK1*/ KC_NO                                        /**/                                        /*HK3*/ ALT_STAB /*Y*/ KC_Y     /*U*/    KC_U     /*I*/    KC_I     /*O*/ KC_O     /*P*/ KC_P     /*\*/    KC_BSLS
                 /*ESC*/  LCTRL_ESC  /*A*/ KC_A    /*S*/    KC_S     /*D*/    KC_D    /*F*/    KC_F     /*G*/ KC_G     /*HK2*/ KC_NO    /*CTRL*/ KC_LCTL  /*ALT*/  KC_LALT  /**/  /*WIN*/  KC_LGUI   /*CTRL*/ KC_RCTL   /*HK4*/ ALT_TAB  /*H*/ KC_H     /*J*/    KC_J     /*K*/    KC_K     /*L*/ KC_L     /*;*/ KC_SCLN  /*'*/    KC_QUOT
-                /*SHFT*/ KC_LSFT    /*Z*/ KC_Z    /*X*/    KC_X     /*C*/    KC_C    /*V*/    KC_V     /*B*/ KC_B                                        /*HOME*/ KC_HOME  /**/  /*PGUP*/ KC_PGUP                                       /*N*/ KC_N     /*M*/    KC_M     /*,*/    KC_COMM  /*.*/ KC_DOT   /*/*/ KC_SLSH  /*SHFT*/ SHFT_LACC
+                /*SHFT*/ SHFT_LACC  /*Z*/ KC_Z    /*X*/    KC_X     /*C*/    KC_C    /*V*/    KC_V     /*B*/ KC_B                                        /*HOME*/ KC_HOME  /**/  /*PGUP*/ KC_PGUP                                       /*N*/ KC_N     /*M*/    KC_M     /*,*/    KC_COMM  /*.*/ KC_DOT   /*/*/ KC_SLSH  /*SHFT*/ SHFT_LACC
                 /*FN*/   LAY_FN     /*`*/ KC_GRV  /*CAPS*/ KC_CAPS  /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_BSPC  /*DEL*/  FN_DEL   /*END*/  KC_END   /**/  /*PGDN*/ KC_PGDN   /*ENT*/ WM_ENTER   /*SPC*/ KC_SPC                  /*UARR*/ KC_NO    /*DARR*/ KC_NO    /*[*/ KC_LBRC  /*]*/ KC_RBRC  /*FN*/   LAY_FN
             >;
         };
@@ -80,11 +80,11 @@
 
         wm_sym {
             bindings = <
-                /*=*/    KC_NO      /*1*/ KC_NO   /*2*/    KC_NO    /*3*/    KC_NO   /*4*/    KC_NO    /*5*/ KC_NO    /*KP*/  KC_NO                                                                     KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
-                /*TAB*/  KC_NO      /*Q*/ WM_Q    /*W*/    WM_W     /*E*/    WM_E    /*R*/    WM_R     /*T*/ WM_T     /*HK1*/ KC_NO                                                                     KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
-                /*ESC*/  KC_NO      /*A*/ WM_A    /*S*/    WM_S     /*D*/    WM_D    /*F*/    WM_F     /*G*/ WM_G     /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO          /*WIN*/  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
-                /*SHFT*/ KC_NO      /*Z*/ WM_Z    /*X*/    WM_X     /*C*/    WM_C    /*V*/    WM_V     /*B*/ WM_B                                        /*HOME*/ KC_NO          /*PGUP*/ KC_NO                  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
-                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO          /*PGDN*/ KC_NO  KC_NO  KC_NO          KC_NO  KC_NO  KC_NO  KC_NO  KC_NO
+                /*=*/    FR_BS      /*1*/ KC_NO   /*2*/    FR_AT    /*3*/    KC_NO   /*4*/    KC_NO    /*5*/ KC_NO    /*KP*/  KC_NO                                                                                    /*MOD*/ KC_NO    /*6*/ KC_NO    /*7*/    KC_NO    /*8*/    KC_NO    /*9*/ KC_NO    /*0*/ KC_NO    /*-*/    KC_NO
+                /*TAB*/  KC_NO      /*Q*/ WM_Q    /*W*/    WM_W     /*E*/    WM_E    /*R*/    WM_R     /*T*/ WM_T     /*HK1*/ KC_NO                                                                                    /*HK3*/ KC_NO    /*Y*/ KC_NO    /*U*/    KC_NO    /*I*/    KC_NO    /*O*/ KC_NO    /*P*/ KC_NO    /*\*/    KC_NO
+                /*ESC*/  KC_NO      /*A*/ WM_A    /*S*/    WM_S     /*D*/    WM_D    /*F*/    WM_F     /*G*/ WM_G     /*HK2*/ KC_NO    /*CTRL*/ KC_NO    /*ALT*/  KC_NO          /*WIN*/  KC_NO     /*CTRL*/ KC_NO     /*HK4*/ KC_NO    /*H*/ KC_NO    /*J*/    KC_NO    /*K*/    KC_NO    /*L*/ KC_NO    /*;*/ KC_NO    /*'*/    KC_NO
+                /*SHFT*/ KC_NO      /*Z*/ WM_Z    /*X*/    WM_X     /*C*/    WM_C    /*V*/    WM_V     /*B*/ WM_B                                        /*HOME*/ KC_NO          /*PGUP*/ KC_NO                                         /*N*/ KC_NO    /*M*/    KC_NO    /*,*/    KC_NO    /*.*/ KC_NO    /*/*/ KC_NO    /*SHFT*/ KC_NO
+                /*FN*/   KC_NO      /*`*/ KC_NO   /*CAPS*/ KC_NO    /*LARR*/ KC_NO   /*RARR*/ KC_NO                   /*SPC*/ KC_NO    /*DEL*/  KC_NO    /*END*/  KC_NO          /*PGDN*/ KC_NO     /*ENT*/ KC_NO      /*SPC*/ KC_NO                   /*UARR*/ KC_NO    /*DARR*/ KC_NO    /*[*/ KC_NO    /*]*/ KC_NO    /*FN*/   KC_NO
             >;
         };
     };
